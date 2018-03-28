@@ -1,0 +1,161 @@
+/* Search bar */
+
+.TreeView > input[type="search"] {
+  width: 100%;
+  background:transparent;
+  height: 40px;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(26, 29, 13, 0.27);
+  border-radius: 0;
+  padding: 5px 10px;
+  transition: border .25s ease-in-out;
+}
+
+/* Elements */
+
+.TreeView {
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.TreeView ul {
+  list-style: none;
+  padding-left: 30px;
+}
+
+.TreeView li {
+  min-width: 100px;
+  transition: all 0.25s ease-in-out;
+}
+
+.TreeView ul li a {
+  color: #222;
+}
+
+.TreeView ul li > .item{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  padding: 10px 5px;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.TreeView ul li:not(.disabled) {
+  cursor: pointer;
+}
+
+.TreeView ul li.selected > .item  {
+  color: #203fdc;
+}
+
+.TreeView ul li.selected > .item :hover {
+  color: #aaa;
+}
+
+.TreeView ul li:not(.disabled) > .item :hover {
+  color: #203fdc;
+}
+
+/* Root elements */
+
+.TreeView ul.depth-0 {
+  padding: 20px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+  transition: all 0.25s;
+}
+
+/* Categories : Nodes with children */
+
+.TreeView li.category > .item {
+  display: block;
+  margin-bottom: 5px;
+  transition: all 0.25s ease-in-out;
+}
+
+.TreeView li.category:not(.folded) > .item {
+  border-bottom: 1px solid #203fdc;
+}
+
+/* Category opener */
+
+.TreeView .opener {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 23px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.TreeView .opener::after {
+  content: '+';
+  display: block;
+  transition: all 0.25s;
+  font-family: monospace;
+}
+
+.TreeView li.category.async > .item > .opener::after {
+  content: '!';
+}
+
+.TreeView .opener:hover {
+  color: #203fdc;
+}
+
+.TreeView li.category:not(.folded) > .item > .opener::after {
+  color: #dc0335;
+  transform: rotate(45deg);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.TreeView li.category.loading > .item > .opener::after {
+  animation: spin 1s infinite;
+}
+
+/* Animations on fold / unfold */
+
+.TreeViewTransition-enter, .TreeViewTransition-leave-to {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.TreeViewTransition-enter-active, .TreeViewTransition-leave-active {
+  transition: all .3s ease-in-out;
+}
+
+/* Drag'n'drop */
+
+.TreeView li.dragover, .TreeView ul.dragover {
+  box-shadow: 0px 0px 5px #CCC
+}
+
+.TreeView ul.dragover {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.TreeView li.dragover {
+  background-color: rgba(100, 100, 100, 0.05);
+  padding: 0px 5px;
+}
+
+.TreeView li.dragover > span.item {
+  border-color: transparent;
+}
+
+.TreeView li.nodrop {
+  box-shadow: 0px 0px 5px crimson;
+  background-color: rgba(255, 20, 60, 0.1);
+  padding: 0px 5px;
+}
