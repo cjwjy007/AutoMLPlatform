@@ -7,11 +7,11 @@ export default [
         desc: "DataInput",
         type: "model"
       },
-      // {
-      //   label: "数据拼接",
-      //   desc: "DataCombination",
-      //   type: "multiinput_model"
-      // },
+      {
+        label: "数据拼接",
+        desc: "DataCombination",
+        type: "multiinput_model"
+      },
       // {
       //   label: "数据分裂",
       //   desc: "DataSplit",
