@@ -25,9 +25,9 @@
     <Modal
       :width="modalSize.width + 70"
       v-model="isNodeOutInfoShow"
-      title="结点输出csv前50行"
-      @on-ok="isNodeOutInfoShow = false">
-      <Table v-if="isNodeOutInfoShow" size="small" :width="modalSize.width" :height="modalSize.height" stripe
+      title="结点输出csv前50行">
+      <Table size="small" :width="modalSize.width" :height="modalSize.height" stripe
+             no-data-text="数据正在努力加载中..."
              :columns="NodeOutInfo.columns"
              :data="NodeOutInfo.data"></Table>
     </Modal>
@@ -36,12 +36,12 @@
 
 <script>
   import {
-    loadGraph,
-    saveGraph,
-    getNodesStatus,
     deleteNode,
+    downloadNodeOutput,
     getNodeOutputInfo,
-    downloadNodeOutput
+    getNodesStatus,
+    loadGraph,
+    saveGraph
   } from '@/apis/Graph/graph.js'
   import {runTask, runTaskFromNode} from '@/apis/Graph/task.js'
   import {getProjectStatus} from '@/apis/Project/project.js'
@@ -195,6 +195,7 @@
         })
       },
       getNodeResult() {
+        this.isNodeOutInfoShow = true;
         this.NodeOutInfo.columns = [];
         this.NodeOutInfo.data = [];
         let nodeId = this.rightClickEvent.item.getModel() ? this.rightClickEvent.item.getModel().id : null;
@@ -217,7 +218,6 @@
               this.NodeOutInfo.data[parseInt(id)][attr] = json[attr][id];
             }
           }
-          this.isNodeOutInfoShow = true;
         })
       },
       downloadNodeResult() {

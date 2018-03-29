@@ -113,3 +113,11 @@ export function getConfig(data){
   });
 }
 
+export function getFatherDataNodeNames(data){
+  return fetch({
+    url: '/config/datanames',
+    method: 'get',
+    params: data
+  });
+}
+
