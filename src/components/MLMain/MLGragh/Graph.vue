@@ -28,8 +28,8 @@
       title="结点输出csv前50行">
       <Table size="small" :width="modalSize.width" :height="modalSize.height" stripe
              no-data-text="数据正在努力加载中..."
-             :columns="NodeOutInfo.columns"
-             :data="NodeOutInfo.data"></Table>
+             :columns="tableInfo.columns"
+             :data="tableInfo.data"></Table>
     </Modal>
   </div>
 </template>
@@ -66,13 +66,17 @@
           nodes: null,
           edges: null
         },
-        NodeOutInfo: {
+        nodeOutInfo: {
+          columns: [],
+          data: []
+        },
+        tableInfo: {
           columns: [],
           data: []
         },
         modalSize: {
-          width: 500,
-          height: 500,
+          width: 0,
+          height: 0,
         },
         isNodeOutInfoShow: false,
         rightClickEvent: null,
@@ -196,29 +200,43 @@
       },
       getNodeResult() {
         this.isNodeOutInfoShow = true;
-        this.NodeOutInfo.columns = [];
-        this.NodeOutInfo.data = [];
+        this.tableInfo = {
+          columns: [],
+          data: []
+        };
+        this.nodeOutInfo = {
+          columns: [],
+          data: []
+        };
         let nodeId = this.rightClickEvent.item.getModel() ? this.rightClickEvent.item.getModel().id : null;
         getNodeOutputInfo({graphId: this.GraphId, nodeId: nodeId}).then(res => {
           let json = JSON.parse(res.data);
-          this.modalSize.width = 0;
-          this.modalSize.height = 0;
+          let size = {
+            width: 0,
+            height: 0
+          };
           for (let attr in json) {
-            this.NodeOutInfo.columns.push({
+            this.nodeOutInfo.columns.push({
               title: attr,
               key: attr,
               width: 130,
             });
-            this.modalSize.width = this.modalSize.width < 700 ? this.modalSize.width + 131 : this.modalSize.width;
+            size.width = size.width < 700 ? size.width + 131 : size.width;
             for (let id in json[attr]) {
-              if (this.NodeOutInfo.data[parseInt(id)] === undefined) {
-                this.NodeOutInfo.data[parseInt(id)] = {}
+              if (this.nodeOutInfo.data[parseInt(id)] === undefined) {
+                this.nodeOutInfo.data[parseInt(id)] = {}
               }
-              this.modalSize.height = this.modalSize.height < 500 ? this.modalSize.height + 50 : this.modalSize.height;
-              this.NodeOutInfo.data[parseInt(id)][attr] = json[attr][id];
+              size.height = size.height < 500 ? size.height + 50 : size.height;
+              this.nodeOutInfo.data[parseInt(id)][attr] = json[attr][id];
             }
           }
-        })
+          this.tableInfo = this.nodeOutInfo;
+          this.modalSize = size;
+          //todo 第一次渲染表格高度出错的暂时解决方案
+          setTimeout(() => {
+            this.modalSize.height += 1;
+          })
+        });
       },
       downloadNodeResult() {
         let nodeId = this.rightClickEvent.item.getModel() ? this.rightClickEvent.item.getModel().id : null;

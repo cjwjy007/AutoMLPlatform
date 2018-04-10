@@ -10,6 +10,8 @@ import Prediction from './Config/Alg/Prediction.vue'
 import RandomForest from './Config/Alg/RandomForest.vue'
 import LogisticRegression from './Config/Alg/LogisticRegression.vue'
 
+import Sequential from './Config/Alg/Sequential.vue'
+
 export default {
   DataPreview: DataPreview,
   DataCombination:DataCombination,
@@ -20,4 +22,5 @@ export default {
   Prediction: Prediction,
   RandomForest: RandomForest,
   LogisticRegression: LogisticRegression,
+  Sequential: Sequential,
 }

@@ -10,11 +10,14 @@
       <slot name="body"></slot>
     </div>
 
-    <div class="config-footer">
-      <slot name="footer"></slot>
-      <button type="button" class="ivu-btn ivu-btn-text ivu-btn-large" @click="close"><!----> <!----> <span>取消</span></button>
-      <button type="button" class="ivu-btn ivu-btn-primary ivu-btn-large" @click="close"><!----> <!----> <span>确定</span></button>
-    </div>
+    <!--<div class="config-footer">-->
+      <!--<slot name="footer">-->
+        <!--<button type="button" class="ivu-btn ivu-btn-text ivu-btn-large" @click="close">&lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt; <span>取消</span>-->
+        <!--</button>-->
+        <!--<button type="button" class="ivu-btn ivu-btn-primary ivu-btn-large" @click="close">&lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;-->
+          <!--<span>确定</span></button>-->
+      <!--</slot>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -23,9 +26,7 @@
   export default {
     props: ['isVisible'],
     data: function () {
-      return {
-
-      }
+      return {}
     },
     methods: {
       close() {

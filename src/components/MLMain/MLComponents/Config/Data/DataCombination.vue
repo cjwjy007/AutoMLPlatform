@@ -82,7 +82,7 @@
         )
       },
       configChanged() {
-        console.log(this.combinationMainTableList);
+        // console.log(this.combinationMainTableList);
         let data = {
           graphId: this.$store.state.graph.curGraph.id,
           nodeId: this.$store.state.graph.curComp.id,

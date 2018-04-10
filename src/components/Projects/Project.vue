@@ -7,7 +7,7 @@
       </div>
       </Col>
       <Col span="19">
-      <graph @select="selectComp"></graph>
+        <graph @select="selectComp"></graph>
       </Col>
       <transition name="fade" transition-mode="out-in">
         <comp-config v-if="configVisible" :isVisible="configVisible" @onCancel="onCancel">
@@ -69,7 +69,8 @@
       "UnconcernedFilter": ConfigTable["UnconcernedFilter"],
       "Prediction": ConfigTable["Prediction"],
       "RandomForest": ConfigTable["RandomForest"],
-      "LogisticRegression": ConfigTable["LogisticRegression"]
+      "LogisticRegression": ConfigTable["LogisticRegression"],
+      "Sequential": ConfigTable["Sequential"]
     }
   }
 </script>

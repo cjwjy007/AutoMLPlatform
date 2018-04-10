@@ -81,6 +81,16 @@ export default [
           // }
         ]
       },
+      {
+        label: "深度学习模型",
+        items: [
+          {
+            label: "序贯模型",
+            desc: "Sequential",
+            type: "alg"
+          },
+        ]
+      }
     ]
   }
 ]
