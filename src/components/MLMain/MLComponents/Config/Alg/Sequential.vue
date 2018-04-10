@@ -161,7 +161,7 @@
             <Input v-model="curLayer.filters"></Input>
           </Form-item>
           <Form-item>
-            <div slot="label">层输出维度
+            <div slot="label">卷积核宽与长
               <Tooltip>
                 <div slot="content" style="white-space: normal;">
                   单个整数或由两个整数构成的list/tuple，卷积核的宽度和长度。如为单个整数，则表示在各个空间维度的相同长度。

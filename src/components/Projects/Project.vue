@@ -7,7 +7,7 @@
       </div>
       </Col>
       <Col span="19">
-        <graph @select="selectComp"></graph>
+      <graph @select="selectComp"></graph>
       </Col>
       <transition name="fade" transition-mode="out-in">
         <comp-config v-if="configVisible" :isVisible="configVisible" @onCancel="onCancel">
@@ -44,8 +44,10 @@
       selectComp() {
         this.configVisible = false;
         this.curComp = this.$store.state.graph.curComp;
-        if (this.curComp.type === 'model') {
+        if (this.curComp.desc === 'DataInput') {
           this.configComponentId = 'DataPreview';
+        } else if (this.curComp.desc === 'NPZReader') {
+          this.configComponentId = 'NPZReader';
         } else {
           this.configComponentId = this.curComp.desc;
         }
@@ -62,6 +64,7 @@
       "graph": Graph,
       "comp-config": CompConfig,
       "DataPreview": ConfigTable["DataPreview"],
+      "NPZReader": ConfigTable["NPZReader"],
       "DataCombination": ConfigTable["DataCombination"],
       "DataSplit": ConfigTable["DataSplit"],
       "MissingValueFiller": ConfigTable["MissingValueFiller"],

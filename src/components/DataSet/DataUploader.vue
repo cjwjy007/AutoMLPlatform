@@ -10,7 +10,7 @@
       <Upload
         type="drag"
         :action="uploadURL"
-        :format="['csv']"
+        :format="['csv','npz']"
         :data="dataInfo"
         :before-upload="checkInfo"
         :on-format-error="handleFormatError"

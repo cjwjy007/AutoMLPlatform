@@ -1,4 +1,5 @@
 import DataPreview from './Config/Data/DataPreview.vue'
+import NPZReader from './Config/Data/NPZReader.vue'
 import DataCombination from './Config/Data/DataCombination.vue'
 import DataSplit from './Config/Data/DataSplit.vue'
 
@@ -23,4 +24,5 @@ export default {
   RandomForest: RandomForest,
   LogisticRegression: LogisticRegression,
   Sequential: Sequential,
+  NPZReader: NPZReader
 }

@@ -8,6 +8,11 @@ export default [
         type: "model"
       },
       {
+        label: "NPZ读取",
+        desc: "NPZReader",
+        type: "model"
+      },
+      {
         label: "数据拼接",
         desc: "DataCombination",
         type: "multiinput_model"
