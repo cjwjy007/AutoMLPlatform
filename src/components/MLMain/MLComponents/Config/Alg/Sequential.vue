@@ -88,7 +88,6 @@
         <!--InputDimension-->
         <div v-if="layerArr.length === 0 || curLayer.idx === 0">
           <Form-item>
-
             <div slot="label">输入维度
               <Tooltip>
                 <div slot="content" style="white-space: normal;">当使用该层作为第一层时，要指定该层输入的维度</div>
