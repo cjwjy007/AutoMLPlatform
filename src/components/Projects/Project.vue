@@ -70,6 +70,8 @@
       "MissingValueFiller": ConfigTable["MissingValueFiller"],
       "OneHotEncoder": ConfigTable["OneHotEncoder"],
       "UnconcernedFilter": ConfigTable["UnconcernedFilter"],
+      "FeatureSelection": ConfigTable["FeatureSelection"],
+      "BinClaBal": ConfigTable["BinClaBal"],
       "Prediction": ConfigTable["Prediction"],
       "RandomForest": ConfigTable["RandomForest"],
       "LogisticRegression": ConfigTable["LogisticRegression"],

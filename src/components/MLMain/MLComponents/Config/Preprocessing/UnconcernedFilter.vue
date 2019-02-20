@@ -17,6 +17,7 @@
 
 <script>
   import {getColumns, setConfig, getConfig} from "@/apis/Graph/config.js"
+  import * as utils from '../../../../../utils/utils'
 
   export default {
     mounted() {
@@ -71,7 +72,7 @@
           nodeId: this.$store.state.graph.curComp.id,
         };
         getConfig(data).then(res => {
-            this.filterColumn = res.data ? res.data.map(item => item.key) : [];
+            this.filterColumn = !utils.isEmpty(res.data) ? !utils.isEmpty(res.data.columns) ? res.data.columns.map(item => item.key) : [] : [];
             this.loading.loadingConfigFinished = true;
           }, err => {
             console.log(err);

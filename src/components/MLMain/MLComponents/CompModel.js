@@ -42,6 +42,16 @@ export default [
         desc: "OneHotEncoder",
         type: "preprocessing"
       },
+      {
+        label: "特征提取",
+        desc: "FeatureSelection",
+        type: "preprocessing"
+      },
+      {
+        label: "二分类平衡",
+        desc: "BinClaBal",
+        type: "preprocessing"
+      }
     ]
   },
   {

@@ -83,6 +83,7 @@ export default class G6MLClass {
   }
 
   drawNode(e) {
+    console.log(e)
     let canvasPos = this.net.invertPoint({x: e.offsetX, y: e.offsetY});
     let label = e.dataTransfer.getData("label");
     let desc = e.dataTransfer.getData("desc");

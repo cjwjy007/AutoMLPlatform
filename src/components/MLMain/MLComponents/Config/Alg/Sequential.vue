@@ -86,7 +86,7 @@
           <Cascader :data="dpLayerName" v-model="curLayer.name" trigger="hover"></Cascader>
         </Form-item>
         <!--InputDimension-->
-        <div v-if="layerArr.length === 0 || curLayer.idx === 0">
+        <div v-if="layerArr && layerArr.length === 0 || curLayer.idx === 0">
           <Form-item>
             <div slot="label">输入维度
               <Tooltip>
@@ -98,7 +98,7 @@
           </Form-item>
         </div>
         <!--Dense-->
-        <div v-if="curLayer.name && curLayer.name[1] === 'Dense'">
+        <div v-if="curLayer.name && curLayer.name.length>0 && curLayer.name[1]  === 'Dense'">
           <Form-item>
             <div slot="label">层输出维度
               <Tooltip content="该层的输出维度。">
@@ -121,7 +121,7 @@
           </Form-item>
         </div>
         <!--Activation-->
-        <div v-if="curLayer.name && curLayer.name[1] === 'Activation'">
+        <div v-if="curLayer.name && curLayer.name.length>0 && curLayer.name[1]  === 'Activation'">
           <Form-item>
             <div slot="label">激活函数
               <Tooltip content="激活函数，为预定义的激活函数名。">
@@ -136,7 +136,7 @@
           </Form-item>
         </div>
         <!--Dropout-->
-        <div v-if="curLayer.name && curLayer.name[1] === 'Dropout'">
+        <div v-if="curLayer.name && curLayer.name.length>0 && curLayer.name[1]  === 'Dropout'">
           <Form-item>
             <div slot="label">神经元断开概率
               <Tooltip content="0~1的浮点数，控制需要断开的神经元的比例。">
@@ -147,10 +147,10 @@
           </Form-item>
         </div>
         <!--Flatten-->
-        <div v-if="curLayer.name && curLayer.name[1] === 'Flatten'">
+        <div v-if="curLayer.name && curLayer.name.length>0 && curLayer.name[1]  === 'Flatten'">
         </div>
         <!--Conv2D-->
-        <div v-if="curLayer.name && curLayer.name[1] === 'Conv2D'">
+        <div v-if="curLayer.name && curLayer.name.length>0 && curLayer.name[1]  === 'Conv2D'">
           <Form-item>
             <div slot="label">层输出维度
               <Tooltip content="卷积核的数目（即输出的维度）">
@@ -184,7 +184,7 @@
           </Form-item>
         </div>
         <!--MaxPooling2D-->
-        <div v-if="curLayer.name && curLayer.name[1] === 'MaxPooling2D'">
+        <div v-if="curLayer.name && curLayer.name.length>0 && curLayer.name[1]  === 'MaxPooling2D'">
           <Form-item>
             <div slot="label">池大小
               <Tooltip>
@@ -339,7 +339,7 @@
           nodeId: this.$store.state.graph.curComp.id,
         };
         getConfig(data).then(res => {
-            if (!utils.isEmptyObject(res.data)) {
+            if (!utils.isEmpty(res.data)) {
               this.layerArr = res.data.layerStruct;
               this.compileParams = res.data.compileParams;
               this.trainParams = res.data.trainParams;

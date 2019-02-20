@@ -4,7 +4,7 @@
       <div class="layout-menu-left">
         <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="handleSelect">
           <div class="layout-logo-left">
-            <b style="color:#c4e2ff">自动机器学习平台</b>
+            <b style="color:#c4e2ff">机器学习平台</b>
           </div>
           <Submenu name="1">
             <template slot="title">
@@ -21,13 +21,13 @@
             <Menu-item name="uploaddata">上传数据</Menu-item>
             <Menu-item name="data">数据查看</Menu-item>
           </Submenu>
-          <Submenu name="3">
-            <template slot="title">
-              <Icon type="ios-analytics"></Icon>
-              机器学习
-            </template>
-            <Menu-item name="components">组件库</Menu-item>
-          </Submenu>
+          <!--<Submenu name="3">-->
+            <!--<template slot="title">-->
+              <!--<Icon type="ios-analytics"></Icon>-->
+              <!--机器学习-->
+            <!--</template>-->
+            <!--<Menu-item name="components">组件库</Menu-item>-->
+          <!--</Submenu>-->
         </Menu>
       </div>
       <div class="layout-right">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="layout-copy">
-          2017 &copy; Fdu Sonic Lab
+          2018 &copy; Fdu Sonic Lab
         </div>
       </div>
     </Row>

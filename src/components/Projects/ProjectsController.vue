@@ -2,7 +2,7 @@
   <div>
     <Form :model="search" inline class="header-form">
       <FormItem label="搜索项目：" :label-width="80">
-        <Input v-model="search.input" placeholder="Enter something..."></Input>
+        <Input v-model="search.input" placeholder="输入项目名"></Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="handleSearch()">搜索项目</Button>

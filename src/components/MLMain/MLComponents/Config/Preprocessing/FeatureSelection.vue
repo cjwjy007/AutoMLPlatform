@@ -1,14 +1,14 @@
 <template>
   <div>
     <Form label-position="top">
-      <FormItem label="OneHot编码策略">
-        <Select v-model="onehotStrategy" @on-change="configChanged">
-          <Option value="columns">选择特定列</Option>
-          <Option value="auto">自动处理</Option>
+      <FormItem label="特征提取策略">
+        <Select v-model="fsStrategy" @on-change="configChanged">
+          <Option value="model">模型选取</Option>
+          <Option value="auc_roc">AUC_ROC曲线选取</Option>
         </Select>
       </FormItem>
-      <FormItem v-if="onehotStrategy === 'columns'">
-        <Select v-model="onehotColumns" multiple filterable @on-change="configChanged" :not-found-text="'无数据源'">
+      <FormItem label="预测列">
+        <Select v-model="fsColumn" @on-change="configChanged" :not-found-text="'无数据源'">
           <Option v-for="(column,index)  in columnNameList" :value="column.value" :key="index">
             {{ column.label }}
           </Option>
@@ -33,9 +33,9 @@
     },
     data: function () {
       return {
-        onehotStrategy: 'columns',
+        fsStrategy: 'model',
         columnNameList:[],
-        onehotColumns:[],
+        fsColumn:'',
         loading: {
           loadingColumnFinished: false,
           loadingConfigFinished: false,
@@ -67,8 +67,8 @@
           nodeId: this.$store.state.graph.curComp.id,
         };
         getConfig(data).then(res => {
-            this.onehotStrategy = res.data ? res.data['strategy'] : 'columns';
-            this.onehotColumns = res.data ? res.data['columns'] ? res.data['columns'] : [] : [];
+            this.fsStrategy = res.data ? res.data['strategy'] : 'model';
+            this.fsColumn = res.data ? res.data['column'] ? res.data['column'] : '' : '';
             this.loading.loadingConfigFinished = true;
           }, err => {
             console.log(err);
@@ -80,8 +80,8 @@
           graphId: this.$store.state.graph.curGraph.id,
           nodeId: this.$store.state.graph.curComp.id,
           config: {
-            strategy:this.onehotStrategy,
-            columns:this.onehotColumns
+            strategy:this.fsStrategy,
+            column:this.fsColumn
           }
         };
         setConfig(data);

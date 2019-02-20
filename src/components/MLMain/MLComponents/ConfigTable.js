@@ -6,6 +6,8 @@ import DataSplit from './Config/Data/DataSplit.vue'
 import MissingValueFiller from './Config/Preprocessing/MissingValueFiller.vue'
 import OneHotEncoder from './Config/Preprocessing/OneHotEncoder.vue'
 import UnconcernedFilter from './Config/Preprocessing/UnconcernedFilter.vue'
+import FeatureSelection from './Config/Preprocessing/FeatureSelection.vue'
+import BinClaBal from './Config/Preprocessing/BinClaBal.vue'
 
 import Prediction from './Config/Alg/Prediction.vue'
 import RandomForest from './Config/Alg/RandomForest.vue'
@@ -20,6 +22,8 @@ export default {
   MissingValueFiller: MissingValueFiller,
   OneHotEncoder: OneHotEncoder,
   UnconcernedFilter: UnconcernedFilter,
+  FeatureSelection:FeatureSelection,
+  BinClaBal:BinClaBal,
   Prediction: Prediction,
   RandomForest: RandomForest,
   LogisticRegression: LogisticRegression,

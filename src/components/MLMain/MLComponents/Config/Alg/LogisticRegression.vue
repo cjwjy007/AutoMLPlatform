@@ -26,6 +26,7 @@
 
 <script>
   import {getColumns, setConfig, getConfig} from "@/apis/Graph/config.js"
+  import * as utils from '../../../../../utils/utils'
 
   export default {
     mounted() {
@@ -85,7 +86,7 @@
         getConfig(data).then(res => {
             if (res.data) {
               this.columnY = res.data.y;
-              this.modelParam = res.data.param;
+              utils.isEmpty(res.data.param) || (this.modelParam = res.data.param);
             }
             this.loading.loadingConfigFinished = true;
           }, err => {
